@@ -66,41 +66,51 @@ public class SpellHandler {
 		//Explode 
 		 worldIn.createExplosion(playerIn, playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), 5, true);
 		//Spawn Endermen
-		 for(int i = 0; i < 3; i++){
-				EntityEnderman Enderman = new EntityEnderman(worldIn);
-				Enderman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(Enderman);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityEnderman Enderman = new EntityEnderman(worldIn);
-				Enderman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
-				worldIn.spawnEntityInWorld(Enderman);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityEnderman Enderman = new EntityEnderman(worldIn);
-				Enderman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
-				worldIn.spawnEntityInWorld(Enderman);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityEnderman Enderman = new EntityEnderman(worldIn);
-				Enderman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(Enderman);
-			}
+		 if(!worldIn.isRemote){
+			 for(int i = 0; i < 3; i++){
+				 EntityEnderman Enderman = new EntityEnderman(worldIn);
+				 Enderman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
+				 worldIn.spawnEntityInWorld(Enderman);
+			 }
+			 for(int i = 0; i < 3; i++){
+				 EntityEnderman Enderman = new EntityEnderman(worldIn);
+				 Enderman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
+				 worldIn.spawnEntityInWorld(Enderman);
+			 }
+			 for(int i = 0; i < 3; i++){
+				 EntityEnderman Enderman = new EntityEnderman(worldIn);
+				 Enderman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
+				 worldIn.spawnEntityInWorld(Enderman);
+			 }
+			 for(int i = 0; i < 3; i++){
+				 EntityEnderman Enderman = new EntityEnderman(worldIn);
+				 Enderman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
+				 worldIn.spawnEntityInWorld(Enderman);
+			 }
+		 	}
+		 else{
+			 //no op.
+		 }
 			//Spawn EnderCrystal
 			EntityEnderCrystal Crystal = new EntityEnderCrystal(worldIn);
 			Crystal.setLocationAndAngles(playerIn.getPosition().getX(), playerIn.getPosition().getY() + 10,playerIn.getPosition().getZ(),0 , 0);
 			worldIn.spawnEntityInWorld(Crystal);
 			
 			//Spawn Endermite
-			for(int i = 0; i < 3; i++){
-				EntityEndermite mite = new EntityEndermite(worldIn);
-				mite.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY(),playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(mite);
+			if(!worldIn.isRemote){
+				for(int i = 0; i < 3; i++){
+					EntityEndermite mite = new EntityEndermite(worldIn);
+					mite.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY(),playerIn.getPosition().getZ() + i,0 , 0);
+					worldIn.spawnEntityInWorld(mite);
+				}
+				for(int i = 0; i < 3; i++){
+					EntityEndermite mite = new EntityEndermite(worldIn);
+					mite.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
+					worldIn.spawnEntityInWorld(mite);
+				}
 			}
-			for(int i = 0; i < 3; i++){
-				EntityEndermite mite = new EntityEndermite(worldIn);
-				mite.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
-				worldIn.spawnEntityInWorld(mite);
+			else{
+				
 			}
 			//Spawn Blocks in radius
 			BlockPos PlayerPos = playerIn.getPosition();
@@ -192,49 +202,55 @@ public class SpellHandler {
 		//Explode 
 		 worldIn.createExplosion(playerIn, playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), 5, true);
 		 //Spawn Blazes
-		 for(int i = 0; i < 3; i++){
-				EntityBlaze Blaze = new EntityBlaze(worldIn);
-				Blaze.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(Blaze);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityBlaze Blaze = new EntityBlaze(worldIn);
-				Blaze.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
-				worldIn.spawnEntityInWorld(Blaze);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityBlaze Blaze = new EntityBlaze(worldIn);
-				Blaze.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
-				worldIn.spawnEntityInWorld(Blaze);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityBlaze Blaze = new EntityBlaze(worldIn);
-				Blaze.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(Blaze);
-			}
+		 if(!worldIn.isRemote){
+		 	for(int i = 0; i < 3; i++){
+		 			EntityBlaze Blaze = new EntityBlaze(worldIn);
+		 			Blaze.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
+		 			worldIn.spawnEntityInWorld(Blaze);
+		 		}
+		 		for(int i = 0; i < 3; i++){
+		 			EntityBlaze Blaze = new EntityBlaze(worldIn);
+		 			Blaze.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
+		 			worldIn.spawnEntityInWorld(Blaze);
+		 		}
+		 		for(int i = 0; i < 3; i++){
+		 			EntityBlaze Blaze = new EntityBlaze(worldIn);
+		 			Blaze.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() - i,0 , 0);
+		 			worldIn.spawnEntityInWorld(Blaze);
+		 		}
+		 		for(int i = 0; i < 3; i++){
+		 			EntityBlaze Blaze = new EntityBlaze(worldIn);
+		 			Blaze.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
+		 			worldIn.spawnEntityInWorld(Blaze);
+		 		}
+		 
 			//Spawn Ghast
 			EntityGhast Ghast = new EntityGhast(worldIn);
 			Ghast.setLocationAndAngles(playerIn.getPosition().getX(), playerIn.getPosition().getY() + 10,playerIn.getPosition().getZ(),0 , 0);
 			worldIn.spawnEntityInWorld(Ghast);
 			
 			//Spawn Pigmen
-			for(int i = 0; i < 3; i++){
-				EntityPigZombie Pigman = new EntityPigZombie(worldIn);
-				Pigman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY(),playerIn.getPosition().getZ() + i,0 , 0);
-				worldIn.spawnEntityInWorld(Pigman);
-			}
-			for(int i = 0; i < 3; i++){
-				EntityPigZombie Pigman = new EntityPigZombie(worldIn);
-				Pigman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
-				worldIn.spawnEntityInWorld(Pigman);
-				Pigman.setRevengeTarget(playerIn);
-			}
+				for(int i = 0; i < 3; i++){
+					EntityPigZombie Pigman = new EntityPigZombie(worldIn);
+					Pigman.setLocationAndAngles(playerIn.getPosition().getX() - i, playerIn.getPosition().getY(),playerIn.getPosition().getZ() + i,0 , 0);
+					worldIn.spawnEntityInWorld(Pigman);
+				}
+				for(int i = 0; i < 3; i++){
+					EntityPigZombie Pigman = new EntityPigZombie(worldIn);
+					Pigman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
+					worldIn.spawnEntityInWorld(Pigman);
+					Pigman.setRevengeTarget(playerIn);
+				}
 			//Spawn MagmaCubes
-			for(int i = 0; i < 1; i++){
-				EntityMagmaCube Cube = new EntityMagmaCube(worldIn);
-				Cube.setLocationAndAngles(playerIn.getPosition().getX() + 5, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
-				worldIn.spawnEntityInWorld(Cube);
-			}
+				for(int i = 0; i < 1; i++){
+					EntityMagmaCube Cube = new EntityMagmaCube(worldIn);
+					Cube.setLocationAndAngles(playerIn.getPosition().getX() + 5, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
+					worldIn.spawnEntityInWorld(Cube);
+				}
+		 	}
+		 else{
+			 
+		 }
 			//Spawn Blocks in radius
 			BlockPos PlayerPos = playerIn.getPosition();
 			float playerx = PlayerPos.getX();
