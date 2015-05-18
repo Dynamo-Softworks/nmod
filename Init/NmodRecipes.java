@@ -231,5 +231,31 @@ public class NmodRecipes {
 				"S",
 				'A', new ItemStack(NItems.AbsorbiumIngot),
 				'S', new ItemStack(NItems.MysticStick));
+		//Volitile Compound
+		GameRegistry.addRecipe(new ItemStack(NItems.VolitileCompound), 
+				"GVG",
+				"VRV",
+				"GVG",
+				'G', new ItemStack(Items.gunpowder),
+				'V', new ItemStack(NItems.VolitiliumDust),
+				'R', new ItemStack(Items.redstone));
+		//Volitile Ingot
+		GameRegistry.addShapelessRecipe(new ItemStack(NItems.VolitileIngot), new ItemStack(NItems.VolitileCompound), new ItemStack(Items.iron_ingot));
+		//Volitile Sword
+		GameRegistry.addRecipe(new ItemStack(NItems.VolitiumSword),
+				"V",
+				"V",
+				"S",
+				'V', new ItemStack(NItems.VolitileIngot),
+				'S', new ItemStack(NItems.MysticStick));
+		//MobilityGauntlet
+		GameRegistry.addRecipe(new ItemStack(NItems.MobilityGauntlet),
+				"PVP",
+				"LEL",
+				"LLL",
+				'P', new ItemStack(Items.ender_pearl),
+				'V', new ItemStack(NItems.VoidCrystal, 1, 0),
+				'L', new ItemStack(Items.leather),
+				'E', new ItemStack(NItems.EnderCrystal, 1, 0));
 	}
 }

@@ -17,6 +17,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.ncd1998.nmod.Projectile.DeathRayProjectile;
@@ -66,6 +67,7 @@ public class SpellHandler {
 		//Explode 
 		 worldIn.createExplosion(playerIn, playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), 5, true);
 		//Spawn Endermen
+		 if(!worldIn.isRemote){
 		 for(int i = 0; i < 3; i++){
 				EntityEnderman Enderman = new EntityEnderman(worldIn);
 				Enderman.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
@@ -102,6 +104,7 @@ public class SpellHandler {
 				mite.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
 				worldIn.spawnEntityInWorld(mite);
 			}
+		 }
 			//Spawn Blocks in radius
 			BlockPos PlayerPos = playerIn.getPosition();
 			float playerx = PlayerPos.getX();
@@ -192,6 +195,7 @@ public class SpellHandler {
 		//Explode 
 		 worldIn.createExplosion(playerIn, playerIn.getPosition().getX(), playerIn.getPosition().getY(), playerIn.getPosition().getZ(), 5, true);
 		 //Spawn Blazes
+		 if(!worldIn.isRemote){
 		 for(int i = 0; i < 3; i++){
 				EntityBlaze Blaze = new EntityBlaze(worldIn);
 				Blaze.setLocationAndAngles(playerIn.getPosition().getX() + i, playerIn.getPosition().getY() + i,playerIn.getPosition().getZ() + i,0 , 0);
@@ -235,6 +239,7 @@ public class SpellHandler {
 				Cube.setLocationAndAngles(playerIn.getPosition().getX() + 5, playerIn.getPosition().getY(),playerIn.getPosition().getZ(),0 , 0);
 				worldIn.spawnEntityInWorld(Cube);
 			}
+		 }
 			//Spawn Blocks in radius
 			BlockPos PlayerPos = playerIn.getPosition();
 			float playerx = PlayerPos.getX();
@@ -341,6 +346,15 @@ public class SpellHandler {
 						worldIn.setBlockState(Lavapos, Blocks.lava.getDefaultState());
 					}
 				}
+	}
+	public static void sniperVeil(ItemStack stack, World worldIn, EntityPlayer playerIn){
+		playerIn.addPotionEffect(new PotionEffect(Potion.invisibility.getId(), 500, 1));
+		if(!playerIn.isSneaking()){
+			MovingObjectPosition topos = playerIn.rayTrace(100, 1.0F);
+			//playerIn.moveEntity(topos.getBlockPos().getX(), topos.getBlockPos().getY(), topos.getBlockPos().getZ());
+			playerIn.setPositionAndUpdate(topos.getBlockPos().getX(), topos.getBlockPos().getY(), topos.getBlockPos().getZ());
+		}
+		playerIn.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 250, 100));
 	}
 	
 }

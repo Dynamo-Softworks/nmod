@@ -35,18 +35,22 @@ public class NItems {
     public static NItem VoiditeIngot;
     public static NItem ChargedNetherQuartz;
     public static NItem AbsorbiumIngot;
+    public static NItem VolitileIngot;
     //Dusts (Not Resources)
     public static NItem VoidDust;
     public static NItem LifeForce;
+    public static NItem VolitileCompound;
     //Spell Papers
     public static NItem SpellPaperNetherRift;
     public static NItem SpellPaperDeathBeam;
     public static NItem SpellPaperDragonSoul;
     public static NItem SpellPaperEnderRift;
     public static NItem SpellPaperEscapeO;
+    public static NItem SpellPaperSniperVeil;
     //Swords
     public static NItemSword CobaltDrainingSword;
     public static NItemSword AbsorbiumSword;
+    public static NItemSword VolitiumSword;
     //Pickaxes
     public static NPickaxe AbsorbiumPickaxe;
     //Shovels
@@ -66,6 +70,16 @@ public class NItems {
     public static NItem Crusher;
     //Books
     public static NItem VoidBook;
+    //Magic Items: Throwables
+    public static NItem ElectronSnowball;
+    //Magic Rings
+    public static NItem StarlightRing;
+    //Magic Items: Other Equipment
+    public static NItem MobilityGauntlet;
+    
+    
+    //Debug
+    public static Item DebugTool;
     
   //Items
     public static void init(){
@@ -92,18 +106,22 @@ public class NItems {
 		VoiditeIngot = new VoiditeIngot();
 		ChargedNetherQuartz = new ChargedNetherQuartz();
 		AbsorbiumIngot = new AbsorbiumIngot();
+		VolitileIngot = new VolitileIngot();
 		//Dusts (Not Resources)
 		VoidDust = new VoidDust();
 		LifeForce = new LifeForce();
+		VolitileCompound = new VolitileCompound();
 		//Spell Papers
     	SpellPaperNetherRift = new SpellPaperNetherRift();
     	SpellPaperDeathBeam = new SpellPaperDeathBeam();
 		SpellPaperDragonSoul = new SpellPaperDragonSoul();
 		SpellPaperEnderRift = new SpellPaperEnderRift();
 		SpellPaperEscapeO = new SpellPaperEscapeO();
+		SpellPaperSniperVeil = new SpellPaperSniperVeil();
 		//Swords
 		CobaltDrainingSword = new CobaltDrainingSword(NMaterials.CobaltMaterial);
 		AbsorbiumSword = new AbsorbiumSword();
+		VolitiumSword = new VolitiumSword();
 		//Pickaxes
 		AbsorbiumPickaxe = new AbsorbiumPickaxe();
 		//Shovels
@@ -123,6 +141,20 @@ public class NItems {
 		Crusher = new Crusher();
 		//Books
 		VoidBook = new VoidBook();
+		//Magic Items: Throwables
+		ElectronSnowball = new ElectronSnowball();
+		//Magic Rings
+		StarlightRing = new StarlightRing();
+		//Magic Items: Other Equipment
+		MobilityGauntlet = new MobilityGauntlet();
+		
+		
+		
+		//Debug
+		if(nmod.devmode){
+			DebugTool = new DebugTool();
+		}
+		
     }
     public static void render(){
     	RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
@@ -150,18 +182,22 @@ public class NItems {
 		renderItem.getItemModelMesher().register(VoiditeIngot, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VoiditeIngot) VoiditeIngot).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(ChargedNetherQuartz, 0, new ModelResourceLocation(nmod.MODID + ":" + ((ChargedNetherQuartz) ChargedNetherQuartz).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(AbsorbiumIngot, 0, new ModelResourceLocation(nmod.MODID + ":" + ((AbsorbiumIngot) AbsorbiumIngot).getName(), "inventory"));
+		renderItem.getItemModelMesher().register(VolitileIngot, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VolitileIngot) VolitileIngot).getName(), "inventory"));
 		//Dusts (Not Resources)
 		renderItem.getItemModelMesher().register(VoidDust, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VoidDust) VoidDust).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(LifeForce, 0, new ModelResourceLocation(nmod.MODID + ":" + ((LifeForce) LifeForce).getName(), "inventory"));
+		renderItem.getItemModelMesher().register(VolitileCompound, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VolitileCompound) VolitileCompound).getName(), "inventory"));
 		//Spell Papers
 		renderItem.getItemModelMesher().register(SpellPaperNetherRift, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperNetherRift) SpellPaperNetherRift).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(SpellPaperDeathBeam, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperDeathBeam) SpellPaperDeathBeam).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(SpellPaperDragonSoul, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperDragonSoul) SpellPaperDragonSoul).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(SpellPaperEnderRift, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperEnderRift) SpellPaperEnderRift).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(SpellPaperEscapeO, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperEscapeO) SpellPaperEscapeO).getName(), "inventory"));
+		renderItem.getItemModelMesher().register(SpellPaperSniperVeil, 0, new ModelResourceLocation(nmod.MODID + ":" + ((SpellPaperSniperVeil) SpellPaperSniperVeil).getName(), "inventory"));
 		//Swords
 		renderItem.getItemModelMesher().register(CobaltDrainingSword, 0, new ModelResourceLocation(nmod.MODID + ":" + ((CobaltDrainingSword) CobaltDrainingSword).getName(), "inventory"));
 		renderItem.getItemModelMesher().register(AbsorbiumSword, 0, new ModelResourceLocation(nmod.MODID + ":" + ((AbsorbiumSword) AbsorbiumSword).getName(), "inventory"));
+		renderItem.getItemModelMesher().register(VolitiumSword, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VolitiumSword) VolitiumSword).getName(), "inventory"));
 		//Pickaxes
 		renderItem.getItemModelMesher().register(AbsorbiumPickaxe, 0, new ModelResourceLocation(nmod.MODID + ":" + ((AbsorbiumPickaxe) AbsorbiumPickaxe).getName(), "inventory"));
 		//Shovels
@@ -181,6 +217,20 @@ public class NItems {
 		renderItem.getItemModelMesher().register(Crusher, 0, new ModelResourceLocation(nmod.MODID + ":" + ((Crusher) Crusher).getName(), "inventory"));
 		//Books
 		renderItem.getItemModelMesher().register(VoidBook, 0, new ModelResourceLocation(nmod.MODID + ":" + ((VoidBook) VoidBook).getName(), "inventory"));
+		//Magic Items: Throwables
+		renderItem.getItemModelMesher().register(ElectronSnowball, 0, new ModelResourceLocation(nmod.MODID + ":" + ((ElectronSnowball) ElectronSnowball).getName(), "inventory"));
+		//Magic Items: Rings
+		renderItem.getItemModelMesher().register(StarlightRing, 0, new ModelResourceLocation(nmod.MODID + ":" + ((StarlightRing) StarlightRing).getName(), "inventory"));
+		//Magic Items: Other Equipment
+		renderItem.getItemModelMesher().register(MobilityGauntlet, 0, new ModelResourceLocation(nmod.MODID + ":" + ((MobilityGauntlet) MobilityGauntlet).getName(), "inventory"));
+    
+    
+    
+		//Debug
+		if(nmod.devmode){
+			renderItem.getItemModelMesher().register(DebugTool, 0, new ModelResourceLocation(nmod.MODID + ":" + ((DebugTool) DebugTool).getName(), "inventory"));
+		}
+    
     }
 	
 	
